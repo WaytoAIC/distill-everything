@@ -64,7 +64,9 @@
 
 ---
 
-## xxoo · WaytoAIC 维护版 / Maintained edition
+# Distill Everything · 蒸馏一切
+
+WaytoAIC 维护版 / Maintained edition
 
 基于 [gmggyyds/xxoo](https://github.com/gmggyyds/xxoo)，保留原作者的方法、案例、配图与 Git 历史。WaytoAIC 增加品牌入口和跨 Agent 安装支持；下方原文中的实测、观点与第一人称均属于上游作者，不代表 WaytoAIC 另行验证。
 
@@ -73,21 +75,25 @@ Based on **gmggyyds/xxoo**, preserving the original workflow, examples, artwork 
 ### 安装 / Install
 
 ```bash
-git clone https://github.com/WaytoAIC/xxoo.git
-cd xxoo
+git clone https://github.com/WaytoAIC/distill-everything.git
+cd distill-everything
 ./install.sh --target codex
 # Other agents:
 ./install.sh --target openclaw
 ./install.sh --target claude
 # Exact skill destination:
-./install.sh --dest ./my-skills/xxoo
+./install.sh --dest ./my-skills/distill-everything
 # Install a branch or tag from a chosen GitHub repository:
-./install.sh --target codex --repo WaytoAIC/xxoo --ref main
+./install.sh --target codex --repo WaytoAIC/distill-everything --ref main
 ```
 
 无参数默认安装到 Codex。`--dest` 是最终 skill 目录。更新保留你填写的业务清单，旧版本备份到临时目录；安装不会替你填写业务判断。运行后需重新加载 Agent 的 Skills。
 
 The default target is Codex. `--dest` is the final skill directory. Updates preserve your private business checklist and back up the old installation to a temporary directory. Reload your agent's skills after installation.
+
+使用示例：**“用蒸馏一切拆解这个项目，并逐环对照我的业务。”**
+
+Skill 名称及安装目录为 `distill-everything`。上游原名 `xxoo` 保留在来源说明与原文中。
 
 ### 工作方式 / Workflow
 
@@ -95,7 +101,7 @@ Provide a repository, article, video or PDF. The agent extracts a flowchart; **y
 
 `fireworks-tech-graph` is an upstream drawing dependency, not bundled here; without it, use the Mermaid fallback described in `references/no-drawing-tool.md`. Video transcription tools are optional dependencies required only for video inputs. The optional `the-great-me` profile is not bundled.
 
-绘图工具与视频转写工具不随本仓安装；缺绘图工具时参考 Mermaid 备用方案。核心流程位于 `.claude/skills/xxoo/SKILL.md`，安装器将同一份内容复制给各 Agent。
+绘图工具与视频转写工具不随本仓安装；缺绘图工具时参考 Mermaid 备用方案。核心流程位于 `.claude/skills/distill-everything/SKILL.md`，安装器将同一份内容复制给各 Agent。
 
 ---
 
@@ -128,8 +134,8 @@ Provide a repository, article, video or PDF. The agent extracts a flowchart; **y
 ## 📦 装
 
 ```bash
-git clone https://github.com/WaytoAIC/xxoo.git
-cd xxoo && ./install.sh --target codex
+git clone https://github.com/WaytoAIC/distill-everything.git
+cd distill-everything && ./install.sh --target codex
 ```
 
 然后直接跟你的 AI 说人话：

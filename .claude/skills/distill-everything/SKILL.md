@@ -1,10 +1,12 @@
 ---
-name: xxoo
-description: 吸星大法——把别人的东西（GitHub 仓/skill、文章、视频、PDF、链接）拆成流程图，逐环拿自己的业务去验，再合成「我的版本」。终点不是读懂了，是手上多一张只有我有的图加一份还缺什么的清单。触发词：吸星大法/xxoo/萃取这个/拆解一下这个仓库/这个skill能不能用/把这个变成我们的/学一下这个视频/这篇文章对我们有用吗/这个开源项目能用到我们业务上吗/最快学会这个
+name: distill-everything
+description: 蒸馏一切（Distill Everything，基于吸星大法）——把别人的东西（GitHub 仓/skill、文章、视频、PDF、链接）拆成流程图，逐环拿自己的业务去验，再合成「我的版本」。终点不是读懂了，是手上多一张只有我有的图加一份还缺什么的清单。触发词：蒸馏一切/distill-everything/Distill Everything/吸星大法/xxoo/萃取这个/拆解一下这个仓库/这个skill能不能用/把这个变成我们的/学一下这个视频/这篇文章对我们有用吗/这个开源项目能用到我们业务上吗/最快学会这个
 user_invocable: true
 ---
 
-# xxoo — 吸星大法
+# Distill Everything — 蒸馏一切
+
+WaytoAIC 维护版，基于 [gmggyyds/xxoo](https://github.com/gmggyyds/xxoo)。保留原作者流程与案例。
 
 把外面的东西**化成自己的**，不是收藏起来。
 
