@@ -9,11 +9,55 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TARGET=codex
+DEST=""
+REMOTE=""
+REF=main
+FETCH=0
+CACHE=""
+usage() {
+  echo 'Usage: install.sh [--target codex|openclaw|claude] [--dest DIR] [--repo OWNER/REPO] [--ref BRANCH_OR_TAG]'
+}
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --help|-h) usage; exit 0 ;;
+    --target|--dest|--repo|--ref)
+      [[ $# -ge 2 && -n "$2" && "$2" != --* ]] || { usage >&2; exit 2; }
+      case "$1" in
+        --target) TARGET="$2" ;;
+        --dest) DEST="$2" ;;
+        --repo) REMOTE="$2"; FETCH=1 ;;
+        --ref) REF="$2"; FETCH=1 ;;
+      esac
+      shift 2 ;;
+    *) usage >&2; exit 2 ;;
+  esac
+done
+case "$TARGET" in
+  codex) DEFAULT_ROOT="${CODEX_HOME:-$HOME/.codex}/skills" ;;
+  openclaw) DEFAULT_ROOT="${OPENCLAW_STATE_DIR:-$HOME/.openclaw}/skills" ;;
+  claude) DEFAULT_ROOT="${CLAUDE_SKILLS_DIR:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/skills}" ;;
+  *) usage >&2; exit 2 ;;
+esac
+if [[ "$FETCH" == 1 ]]; then
+  REMOTE="${REMOTE:-WaytoAIC/xxoo}"
+  [[ "$REMOTE" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ && "$REF" != -* ]] || { echo 'Invalid repository or ref' >&2; exit 2; }
+  CACHE="$(mktemp -d)"
+  trap '[[ -z "$CACHE" ]] || rm -rf -- "$CACHE"' EXIT
+  git clone --depth 1 --branch "$REF" -- "https://github.com/$REMOTE.git" "$CACHE/source"
+  REPO="$CACHE/source"
+fi
 SRC="$REPO/.claude/skills/xxoo"
-CONFIG_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
-DEST_ROOT="${CLAUDE_SKILLS_DIR:-$CONFIG_DIR/skills}"
-DEST="$DEST_ROOT/xxoo"
-echo "· 目标配置档：$CONFIG_DIR"
+DEST="${DEST:-$DEFAULT_ROOT/xxoo}"
+[[ "$DEST" != / && "$DEST" != "$HOME" && "$DEST" != . && "$DEST" != .. ]] || { echo 'Choose a dedicated skill directory' >&2; exit 2; }
+DEST_ROOT="$(dirname "$DEST")"
+# Resolve before replacing an installation; never move the source repository.
+mkdir -p "$DEST_ROOT"
+DEST="$(cd "$DEST_ROOT" && pwd)/$(basename "$DEST")"
+case "$REPO/" in "$DEST/"*) echo 'Destination contains source repository' >&2; exit 2 ;; esac
+case "$DEST/" in "$REPO/"*) echo 'Destination must be outside source repository' >&2; exit 2 ;; esac
+echo "· 安装目标：$TARGET → $DEST"
+
 
 [[ -f "$SRC/SKILL.md" ]] || { echo "✗ 找不到 $SRC/SKILL.md，请在仓库根目录执行"; exit 1; }
 

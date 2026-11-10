@@ -1,3 +1,106 @@
+## 🚀 Way to AIC | 通往 AI 电商之路
+---
+### 🌐 官网 Website
+- https://waytoaic.com
+- https://www.waytoaic.com
+---
+
+### 👥 社群招募 Community
+`Way to AIC 社群招募 | WaytoAIC.com`
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d9f8bbf4-2056-4780-975d-86c885b52bab" width="70%">
+</p>
+
+---
+
+### 📣 公众号 WeChat Official Account
+`维正 WaytoAIC`
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/71c71a5c-e68a-4f30-9afb-f2b056619991" width="300">
+</p>
+
+---
+
+### 🧠 知识星球 Xiaozhixing
+`AI电商之路 WaytoAIC`
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9eccef07-0e84-45a7-a415-affcb18c928d" width="200">
+  <img src="https://github.com/user-attachments/assets/4e99fbc3-1981-4fee-b113-c9821141102d" width="400">
+</p>
+
+---
+
+### 🧩 About Way to AIC
+
+**AIC = AI Commerce**
+
+在 AI 重塑商业的时代，我们希望和每一个拥抱 AI 的卖家：
+
+- 找到场景
+- 定义问题
+- 积累能力
+- 设计系统
+
+共同通往 AI 电商之路。
+
+> Way to AIC 不是教学，不是工具，
+> 而是一条所有电商人共同走的进化之路。
+
+### WaytoAIC 理念 | Principles
+
+| 中文 | English |
+|---|---|
+| 场景先于方法 | Context before method |
+| AI 的价值来自真实业务场景，而不是技术本身。 | AI creates value through real business contexts, not through technology alone. |
+| 问题先于答案 | Problem before answer |
+| 定义问题，比拥有工具更重要。 | Defining the problem matters more than collecting tools. |
+| 系统胜过技巧 | System over tricks |
+| 技巧是术，系统才是道，决定卖家的上限。 | Tricks are tactical; systems define long-term leverage and ceiling. |
+| 共创优于独行 | Co-creation over solo progress |
+| 我们相信，真正的进化发生在共同探索的过程中。 | Real evolution happens through shared exploration. |
+
+---
+
+## xxoo · WaytoAIC 维护版 / Maintained edition
+
+基于 [gmggyyds/xxoo](https://github.com/gmggyyds/xxoo)，保留原作者的方法、案例、配图与 Git 历史。WaytoAIC 增加品牌入口和跨 Agent 安装支持；下方原文中的实测、观点与第一人称均属于上游作者，不代表 WaytoAIC 另行验证。
+
+Based on **gmggyyds/xxoo**, preserving the original workflow, examples, artwork and Git history. WaytoAIC adds distribution documentation and multi-agent installation. The original author's empirical claims are not new WaytoAIC test results. See [UPSTREAM.md](UPSTREAM.md) for provenance and license status.
+
+### 安装 / Install
+
+```bash
+git clone https://github.com/WaytoAIC/xxoo.git
+cd xxoo
+./install.sh --target codex
+# Other agents:
+./install.sh --target openclaw
+./install.sh --target claude
+# Exact skill destination:
+./install.sh --dest ./my-skills/xxoo
+# Install a branch or tag from a chosen GitHub repository:
+./install.sh --target codex --repo WaytoAIC/xxoo --ref main
+```
+
+无参数默认安装到 Codex。`--dest` 是最终 skill 目录。更新保留你填写的业务清单，旧版本备份到临时目录；安装不会替你填写业务判断。运行后需重新加载 Agent 的 Skills。
+
+The default target is Codex. `--dest` is the final skill directory. Updates preserve your private business checklist and back up the old installation to a temporary directory. Reload your agent's skills after installation.
+
+### 工作方式 / Workflow
+
+Provide a repository, article, video or PDF. The agent extracts a flowchart; **you validate each step against your business**; the agent then helps draft and merge your own workflow. Finish with a personalized diagram, a gap list and an archive in your existing knowledge base. Private business inputs stay local. The workflow instructions and templates are in Chinese.
+
+`fireworks-tech-graph` is an upstream drawing dependency, not bundled here; without it, use the Mermaid fallback described in `references/no-drawing-tool.md`. Video transcription tools are optional dependencies required only for video inputs. The optional `the-great-me` profile is not bundled.
+
+绘图工具与视频转写工具不随本仓安装；缺绘图工具时参考 Mermaid 备用方案。核心流程位于 `.claude/skills/xxoo/SKILL.md`，安装器将同一份内容复制给各 Agent。
+
+---
+
+## 上游项目介绍 / Original project introduction
+
 <div align="center">
 
 <img src="./banner.png" alt="xxoo — 吸星大法" width="100%">
@@ -25,8 +128,8 @@
 ## 📦 装
 
 ```bash
-git clone https://github.com/gmggyyds/xxoo.git
-cd xxoo && ./install.sh
+git clone https://github.com/WaytoAIC/xxoo.git
+cd xxoo && ./install.sh --target codex
 ```
 
 然后直接跟你的 AI 说人话：
